@@ -71,8 +71,8 @@ public class TableroGUI {
 
         JComboBox m1 = new JComboBox();
         JComboBox m2 = new JComboBox();
-        m1.setModel(new DefaultComboBoxModel(new String[] { "MinMax", "AlfaBeta"}));
-        m2.setModel(new DefaultComboBoxModel(new String[] { "MinMax", "AlfaBeta"}));
+        m1.setModel(new DefaultComboBoxModel(new String[] { "MinMax", "AlfaBeta", "Random"}));
+        m2.setModel(new DefaultComboBoxModel(new String[] { "MinMax", "AlfaBeta", "Random"}));
         m1.setSelectedIndex(0);
         m2.setSelectedIndex(1);
 //        contrincantes.append(opList.getSelectedItem().toString());
@@ -102,24 +102,20 @@ public class TableroGUI {
                     } else {
 
 //                        if (!gameStarted) {
-                        switch (m1.getSelectedIndex()) {
-                            case 0:
-                                jugadores[0] = new Minimax(Tablero.JUGADOR_NEGRO, Integer.parseInt(prof1.getText()));
+    switch (m1.getSelectedIndex()) {
+        case 0:
+            jugadores[0] = new Minimax(Tablero.JUGADOR_NEGRO, Integer.parseInt(prof1.getText()));
 //                                jugadores[1] = new AlphaBeta(Tablero.JUGADOR_BLANCO, Integer.parseInt(prof.getText()));
-                                break;
-                            case 1:
-                                jugadores[0] = new AlphaBeta(Tablero.JUGADOR_NEGRO, Integer.parseInt(prof1.getText()));
+            break;
+        case 1:
+            jugadores[0] = new AlphaBeta(Tablero.JUGADOR_NEGRO, Integer.parseInt(prof1.getText()));
 //                                jugadores[1] = new RL(Tablero.JUGADOR_BLANCO);
-                                break;
-                            case 2:
-//                                jugadores[0] = new AlphaBeta(Tablero.JUGADOR_NEGRO, Integer.parseInt(prof.getText()));
-                                jugadores[0] = new RL(Tablero.JUGADOR_NEGRO);
-                                ((RL) jugadores[Tablero.JUGADOR_NEGRO]).recuperarTablaDeBusqueda();
-                                break;
-                            case 3:
-                                jugadores[0] = new Random(Tablero.JUGADOR_NEGRO);
-                                break;
-                        }
+            break;
+        case 2:
+            jugadores[0] = new Random(Tablero.JUGADOR_NEGRO);
+            break;
+            
+    }
 
                         switch (m2.getSelectedIndex()) {
                             case 0:
@@ -131,15 +127,9 @@ public class TableroGUI {
 //                                jugadores[1] = new RL(Tablero.JUGADOR_BLANCO);
                                 break;
                             case 2:
-//                                jugadores[0] = new AlphaBeta(Tablero.JUGADOR_NEGRO, Integer.parseInt(prof.getText()));
-                                jugadores[1] = new RL(Tablero.JUGADOR_BLANCO);
-                                ((RL) jugadores[Tablero.JUGADOR_BLANCO]).recuperarTablaDeBusqueda();
-                                break;
-                            case 3:
                                 jugadores[1] = new Random(Tablero.JUGADOR_BLANCO);
-                                break;
+                                break;           
                         }
-
                         gameStarted = true;
 //                        }
                     }
