@@ -223,8 +223,8 @@ public class TableroGUI {
                 new LineBorder(Color.BLACK)
         ));
         Color ochre = new Color(248, 191, 60);
-        Color black = new Color(81, 26, 11);
-        Color white = new Color(252, 238, 152);
+        Color black = new Color(255, 255, 204);
+        Color white = new Color(81, 26, 11);
         chessBoard.setBackground(ochre);
         JPanel boardConstrain = new JPanel(new GridBagLayout());
         boardConstrain.setBackground(ochre);
