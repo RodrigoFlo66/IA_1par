@@ -222,8 +222,8 @@ public class TableroGUI {
                 new EmptyBorder(0, 0, 0, 0),
                 new LineBorder(Color.BLACK)
         ));
-        Color ochre = new Color(204, 119, 34);
-        Color black = new Color(53, 95, 16);
+        Color ochre = new Color(248, 191, 60);
+        Color black = new Color(81, 26, 11);
         Color white = new Color(252, 238, 152);
         chessBoard.setBackground(ochre);
         JPanel boardConstrain = new JPanel(new GridBagLayout());
@@ -275,7 +275,7 @@ public class TableroGUI {
             String[] image_names = {"peon_negro", "peon_blanco", "dama_negra", "dama_blanca", "fondo_negro", "fondo_blanco"};
 
             for (int i = 0; i < image_names.length; i++) {
-                imagenesTablero[i] = ImageIO.read(new File("C:\\Users\\user\\Desktop\\IA\\Damas\\damas\\src\\images\\" + image_names[i] + ".png"));
+                imagenesTablero[i] = ImageIO.read(new File("D:\\Ale U\\2023\\1er Semestre-2023\\Inteligencia Artificial\\IA_PP_Practica\\IA_1par\\damas\\src\\images\\" + image_names[i] + ".png"));
             }
         } catch (Exception e) {
             e.printStackTrace();
