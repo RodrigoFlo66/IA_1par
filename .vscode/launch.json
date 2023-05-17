@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TableroGUI",
+            "request": "launch",
+            "mainClass": "TableroGUI",
+            "projectName": "Tarea_IA_1P_b2c16f49"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

@@ -58,7 +58,7 @@ public class TableroGUI {
         JToolBar tools2 = new JToolBar();
         tools2.setFloatable(false);
         gui.add(tools2, BorderLayout.AFTER_LAST_LINE);
-        JTextField deserializarTxt = new JTextField();
+       /*  JTextField deserializarTxt = new JTextField();
         tools2.add(deserializarTxt);
         tools2.add(new AbstractAction("Deserializar") {
 
@@ -67,12 +67,12 @@ public class TableroGUI {
                 tablero = Tablero.deserializar(deserializarTxt.getText());
                 desplegarTablero();
             }
-        });
+        });*/
 
         JComboBox m1 = new JComboBox();
         JComboBox m2 = new JComboBox();
-        m1.setModel(new DefaultComboBoxModel(new String[] { "MinMax", "AlfaBeta", "RL", "Random" }));
-        m2.setModel(new DefaultComboBoxModel(new String[] { "MinMax", "AlfaBeta", "RL", "Random" }));
+        m1.setModel(new DefaultComboBoxModel(new String[] { "MinMax", "AlfaBeta"}));
+        m2.setModel(new DefaultComboBoxModel(new String[] { "MinMax", "AlfaBeta"}));
         m1.setSelectedIndex(0);
         m2.setSelectedIndex(1);
 //        contrincantes.append(opList.getSelectedItem().toString());
@@ -275,7 +275,7 @@ public class TableroGUI {
             String[] image_names = {"peon_negro", "peon_blanco", "dama_negra", "dama_blanca", "fondo_negro", "fondo_blanco"};
 
             for (int i = 0; i < image_names.length; i++) {
-                imagenesTablero[i] = ImageIO.read(new File("D:\\Ale U\\2023\\1er Semestre-2023\\Inteligencia Artificial\\IA_PP_Practica\\IA_1par\\damas\\src\\images\\" + image_names[i] + ".png"));
+                imagenesTablero[i] = ImageIO.read(new File("C:\\Users\\user\\Desktop\\IA\\Tarea_IA_1P\\damas\\src\\images\\" + image_names[i] + ".png"));
             }
         } catch (Exception e) {
             e.printStackTrace();
