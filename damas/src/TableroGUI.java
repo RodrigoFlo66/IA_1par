@@ -47,13 +47,17 @@ public class TableroGUI {
         JToolBar tools = new JToolBar();
         tools.setFloatable(false);
         gui.add(tools, BorderLayout.PAGE_START);
-        tools.add(new AbstractAction("Nuevo") {
+        ImageIcon iconoNuevo = new ImageIcon("C:\\Users\\user\\Desktop\\IA\\Tarea_IA_1P\\damas\\src\\images\\add_icon.png");
+        JButton botonNuevo = new JButton(iconoNuevo);
+botonNuevo.setToolTipText("Nuevo");
+botonNuevo.addActionListener(new AbstractAction() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        nuevoTablero();
+    }
+});
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                nuevoTablero();
-            }
-        });
+tools.add(botonNuevo);
 
         JToolBar tools2 = new JToolBar();
         tools2.setFloatable(false);
@@ -90,8 +94,11 @@ public class TableroGUI {
         prof1.setText("2");
         prof2.setText("2");
 
+        ImageIcon iconoSig = new ImageIcon("C:\\Users\\user\\Desktop\\IA\\Tarea_IA_1P\\damas\\src\\images\\next_icon.png");
+        JButton botonSig = new JButton(iconoSig);
+        botonSig.setToolTipText("Siguiente Paso");
 
-        tools.add(new AbstractAction("Siguiente paso") {
+        botonSig.addActionListener(new AbstractAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -189,6 +196,7 @@ public class TableroGUI {
                 }
             }
         });
+        tools.add(botonSig);
         tools.addSeparator();
         tools.add(message);
 

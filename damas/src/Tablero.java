@@ -203,30 +203,45 @@ class Tablero {
 
                         if (posicionValida(x1, y1)) {
                             // Posicion vacia
+
                             if (!capturaRealizada && tablero[x1][y1] == Tablero.VACIO) {
                                 tableroModificado = crearTableroModificado(tablero, x, y, x1, y1);
                                 convertirEnDama(tableroModificado, x1, y1, jugador);
                                 tablerosPosibles.add(tableroModificado);
                                 tablerosConCaptura.put(tableroModificado, false);
-                                // Capturable
-                            } else if (tablero[x1][y1] != Tablero.VACIO && tablero[x1][y1] % 2 == oponente
-                                    && posicionValida(x2, y2) && tablero[x2][y2] == Tablero.VACIO) {
-                                if (!capturaRealizada) {
-                                    capturaRealizada = true;
-                                    // Vaciar la lista
-                                    tablerosPosibles = new ArrayList<>();
-                                }
-
-                                tableroModificado = crearTableroModificado(tablero, x, y, x2, y2);
-
-                                // No se convirtio en dama
-                                if (!convertirEnDama(tableroModificado, x2, y2, jugador)) {
-                                    masCapturas(tablerosPosibles, tablerosConCaptura, tableroModificado, x2, y2, jugador);
-                                } else {
-                                    tablerosPosibles.add(tableroModificado);
-                                    tablerosConCaptura.put(tableroModificado, true);
+                            } else if (tablero[x1][y1] != Tablero.VACIO && tablero[x1][y1] % 2 == oponente) {
+                                int dx = x1 - x;
+                                int dy = y1 - y;
+                            
+                                // Verificar capturas en todas las direcciones diagonales
+                                for (int k = 1; k <= 4; k++) {
+                                    x2 = x1 + k * dx;
+                                    y2 = y1 + k * dy;
+                            
+                                    if (posicionValida(x2, y2) && tablero[x2][y2] == Tablero.VACIO) {
+                                        if (!capturaRealizada) {
+                                            capturaRealizada = true;
+                                            // Vaciar la lista
+                                            tablerosPosibles = new ArrayList<>();
+                                        }
+                            
+                                        tableroModificado = crearTableroModificado(tablero, x, y, x2, y2);
+                            
+                                        // No se convirtió en dama
+                                        if (!convertirEnDama(tableroModificado, x2, y2, jugador)) {
+                                            masCapturas(tablerosPosibles, tablerosConCaptura, tableroModificado, x2, y2, jugador);
+                                        } else {
+                                            tablerosPosibles.add(tableroModificado);
+                                            tablerosConCaptura.put(tableroModificado, true);
+                                        }
+                                    } else {
+                                        // Se encontró una ficha enemiga en la diagonal, no se pueden realizar más capturas en esa dirección
+                                        break;
+                                    }
                                 }
                             }
+//////////////////////////////                            
+                            
                         }
                     }
                 }
