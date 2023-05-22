@@ -47,10 +47,10 @@ public class TableroGUI {
         JToolBar tools = new JToolBar();
         tools.setFloatable(false);
         gui.add(tools, BorderLayout.PAGE_START);
-        ImageIcon iconoNuevo = new ImageIcon("C:\\Users\\user\\Desktop\\IA\\Tarea_IA_1P\\damas\\src\\images\\add_icon.png");
+        ImageIcon iconoNuevo = new ImageIcon("D:\\Ale U\\2023\\1er Semestre-2023\\Inteligencia Artificial\\IA_PP_Practica\\IA_1par\\damas\\src\\images\\add_icon.png");
         JButton botonNuevo = new JButton(iconoNuevo);
-botonNuevo.setToolTipText("Nuevo");
-botonNuevo.addActionListener(new AbstractAction() {
+        botonNuevo.setToolTipText("Nuevo");
+        botonNuevo.addActionListener(new AbstractAction() {
     @Override
     public void actionPerformed(ActionEvent e) {
         nuevoTablero();
@@ -72,7 +72,9 @@ tools.add(botonNuevo);
                 desplegarTablero();
             }
         });*/
-
+        JPanel sidePanel = new JPanel();
+        sidePanel.setLayout(new BoxLayout(sidePanel, BoxLayout.Y_AXIS));
+        sidePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
         JComboBox m1 = new JComboBox();
         JComboBox m2 = new JComboBox();
         m1.setModel(new DefaultComboBoxModel(new String[] { "MinMax", "AlfaBeta", "Random"}));
@@ -94,7 +96,7 @@ tools.add(botonNuevo);
         prof1.setText("2");
         prof2.setText("2");
 
-        ImageIcon iconoSig = new ImageIcon("C:\\Users\\user\\Desktop\\IA\\Tarea_IA_1P\\damas\\src\\images\\next_icon.png");
+        ImageIcon iconoSig = new ImageIcon("D:\\Ale U\\2023\\1er Semestre-2023\\Inteligencia Artificial\\IA_PP_Practica\\IA_1par\\damas\\src\\images\\next_icon.png");
         JButton botonSig = new JButton(iconoSig);
         botonSig.setToolTipText("Siguiente Paso");
 
@@ -215,35 +217,40 @@ tools.add(botonNuevo);
 //        gui.add(new JLabel("?"), BorderLayout.LINE_START);
 //        gui.add(new JButton("Save"), BorderLayout.);
 
-        chessBoard = new JPanel(new GridLayout(0, 8));
-        chessBoard.setBorder(new CompoundBorder(
-                new EmptyBorder(0, 0, 0, 0),
-                new LineBorder(Color.BLACK)
-        ));
-        Color ochre = new Color(248, 191, 60);
-        Color black = new Color(255, 255, 204);
-        Color white = new Color(81, 26, 11);
-        chessBoard.setBackground(ochre);
-        JPanel boardConstrain = new JPanel(new GridBagLayout());
-        boardConstrain.setBackground(ochre);
-        boardConstrain.add(chessBoard);
-        gui.add(boardConstrain);
+        //chessBoard = new JPanel(new GridLayout(0, 8));
+        int squareSize = 70; // Tamaño deseado de las casillas
 
-        Insets buttonMargin = new Insets(0, 0, 0, 0);
-        for (int i = 0; i < chessBoardSquares.length; i++) {
-            for (int j = 0; j < chessBoardSquares[i].length; j++) {
-                JButton b = new JButton();
-                b.setMargin(buttonMargin);
-                ImageIcon icon = new ImageIcon(new BufferedImage(44, 44, BufferedImage.TYPE_INT_ARGB));
-                b.setIcon(icon);
-                if ((j % 2 == 1 && i % 2 == 1) || (j % 2 == 0 && i % 2 == 0)) {
-                    b.setBackground(white);
-                } else {
-                    b.setBackground(black);
-                }
-                chessBoardSquares[i][j] = b;
-            }
+chessBoard = new JPanel(new GridLayout(0, 8));
+chessBoard.setBorder(new CompoundBorder(
+        new EmptyBorder(0, 0, 0, 0),
+        new LineBorder(Color.BLACK)
+));
+Color ochre = new Color(248, 191, 60);
+Color black = new Color(255, 255, 204);
+Color white = new Color(81, 26, 11);
+chessBoard.setBackground(ochre);
+JPanel boardConstrain = new JPanel(new GridBagLayout());
+boardConstrain.setBackground(ochre);
+boardConstrain.add(chessBoard);
+gui.add(boardConstrain);
+
+Insets buttonMargin = new Insets(0, 0, 0, 0);
+for (int i = 0; i < chessBoardSquares.length; i++) {
+    for (int j = 0; j < chessBoardSquares[i].length; j++) {
+        JButton b = new JButton();
+        b.setMargin(buttonMargin);
+        ImageIcon icon = new ImageIcon(new BufferedImage(squareSize, squareSize, BufferedImage.TYPE_INT_ARGB));
+        b.setIcon(icon);
+        if ((j % 2 == 1 && i % 2 == 1) || (j % 2 == 0 && i % 2 == 0)) {
+            b.setBackground(white);
+        } else {
+            b.setBackground(black);
         }
+        chessBoardSquares[i][j] = b;
+        chessBoardSquares[i][j].setPreferredSize(new Dimension(squareSize, squareSize));
+        chessBoard.add(chessBoardSquares[i][j]);
+    }
+}
         nuevoTablero();
 
         for (int i = 0; i < 8; i++) {
@@ -273,7 +280,7 @@ tools.add(botonNuevo);
             String[] image_names = {"peon_negro", "peon_blanco", "dama_negra", "dama_blanca", "fondo_negro", "fondo_blanco"};
 
             for (int i = 0; i < image_names.length; i++) {
-                imagenesTablero[i] = ImageIO.read(new File("C:\\Users\\user\\Desktop\\IA\\Tarea_IA_1P\\damas\\src\\images\\" + image_names[i] + ".png"));
+                imagenesTablero[i] = ImageIO.read(new File("D:\\Ale U\\2023\\1er Semestre-2023\\Inteligencia Artificial\\IA_PP_Practica\\IA_1par\\damas\\src\\images\\" + image_names[i] + ".png"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -285,6 +292,9 @@ tools.add(botonNuevo);
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
+
+                ImageIcon resizedIcon = new ImageIcon(imagenesTablero[tablero[i][j]].getScaledInstance(75, 75, Image.SCALE_SMOOTH));
+        chessBoardSquares[i][j].setIcon(resizedIcon);
                 // peon negro, peon_blanco, dama negra, dama blanca
                 if (tablero[i][j] < 4) {
                     chessBoardSquares[i][j].setIcon(new ImageIcon(imagenesTablero[tablero[i][j]]));
@@ -326,7 +336,7 @@ tools.add(botonNuevo);
 
 
             Dimension scDim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-            Dimension frmDim = new Dimension(500, 470);
+            Dimension frmDim = new Dimension(720, 690);
             f.setBounds(scDim.width/2-frmDim.width/2,scDim.height/2-frmDim.height/2, frmDim.width, frmDim.height);
             f.setResizable(false);
             f.setMaximumSize(new Dimension(frmDim));
