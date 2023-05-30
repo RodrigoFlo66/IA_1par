@@ -1,8 +1,4 @@
-/*
-    Codigo de https://stackoverflow.com/a/21142687/
- */
 
-//import javax.imageio.ImageIO;
 
 import jdk.nashorn.internal.scripts.JO;
 
@@ -62,16 +58,7 @@ tools.add(botonNuevo);
         JToolBar tools2 = new JToolBar();
         tools2.setFloatable(false);
         gui.add(tools2, BorderLayout.AFTER_LAST_LINE);
-       /*  JTextField deserializarTxt = new JTextField();
-        tools2.add(deserializarTxt);
-        tools2.add(new AbstractAction("Deserializar") {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tablero = Tablero.deserializar(deserializarTxt.getText());
-                desplegarTablero();
-            }
-        });*/
+       
         JPanel sidePanel = new JPanel();
         sidePanel.setLayout(new BoxLayout(sidePanel, BoxLayout.Y_AXIS));
         sidePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -142,17 +129,7 @@ tools.add(botonNuevo);
                         gameStarted = true;
 //                        }
                     }
-//
-//                Jugador[] jugadores = new Jugador[2];
-//
-//                jugadores[0] = new Random(Tablero.JUGADOR_NEGRO);
-//                jugadores[1] = new AlphaBeta(Tablero.JUGADOR_BLANCO, 2);
 
-//                int[][] tablero = Tablero.crearTablero();
-//                int turno = Tablero.JUGADOR_NEGRO;
-//                int turno = Tablero.JUGADOR_NEGRO;
-//                int estado = Tablero.JUEGO_CONTINUA;
-//                int pasosSinCaptura = 0;
                 if (gameStarted) {
                     boolean captura;
 
@@ -170,15 +147,7 @@ tools.add(botonNuevo);
                         }
 
                         turno = Tablero.jugadorOpuesto(turno);
-                        //                    cantJugadas++;
-                        //                    try {
-                        //                        chessBoard.doLayout();
-                        //                        sleep(100);
-                        //
-                        //                    } catch (InterruptedException e1) {
-                        //                        e1.printStackTrace();
-                        //                        System.exit(1);
-                        //                    }
+                        
                     }
 
 
@@ -214,10 +183,6 @@ tools.add(botonNuevo);
         tools.addSeparator();
         tools.add(prof2);
 
-//        gui.add(new JLabel("?"), BorderLayout.LINE_START);
-//        gui.add(new JButton("Save"), BorderLayout.);
-
-        //chessBoard = new JPanel(new GridLayout(0, 8));
         int squareSize = 70; // Tamaño deseado de las casillas
 
 chessBoard = new JPanel(new GridLayout(0, 8));

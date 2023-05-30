@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 import javax.swing.*;
 import java.util.ArrayList;
 
-/**
- * @author Daniel Min
- * @author Daniel Wohlgemuth
- */
+
 public class Main {
 
     /**
@@ -35,13 +28,7 @@ public class Main {
         int cantJuegos = 100;
 
         jugadores[Tablero.JUGADOR_NEGRO] = new Random(Tablero.JUGADOR_NEGRO);
-//        jugadores[Tablero.JUGADOR_NEGRO] = new RL(Tablero.JUGADOR_NEGRO);
-//        jugadores[Tablero.JUGADOR_NEGRO] = new Minimax(Tablero.JUGADOR_NEGRO, 2);
-//        jugadores[Tablero.JUGADOR_NEGRO] = new AlphaBeta(Tablero.JUGADOR_NEGRO, 2);
 
-//        jugadores[Tablero.JUGADOR_BLANCO] = new Random(Tablero.JUGADOR_BLANCO);
-//        jugadores[Tablero.JUGADOR_BLANCO] = new RL(Tablero.JUGADOR_BLANCO);
-//        jugadores[Tablero.JUGADOR_BLANCO] = new Minimax( Tablero.JUGADOR_BLANCO, 2);
         jugadores[Tablero.JUGADOR_BLANCO] = new AlphaBeta(Tablero.JUGADOR_BLANCO, 2);
 
         
@@ -59,9 +46,7 @@ public class Main {
             int estado = Tablero.JUEGO_CONTINUA;
             int pasosSinCaptura = 0;
             boolean captura;
-//            Tablero.imprimirTablero(tablero);
 
-//            System.out.println("Turno: "+turno);
 
             jugadores[Tablero.JUGADOR_NEGRO].setJugador(turno);
             jugadores[Tablero.JUGADOR_BLANCO].setJugador(Tablero.jugadorOpuesto(turno));
@@ -92,8 +77,7 @@ public class Main {
 
                 turno = Tablero.jugadorOpuesto(turno);
                 cantJugadas++;
-//                System.out.println(cantJugadas);
-//                Tablero.imprimirTablero(tablero);
+
             }
 //            Tablero.imprimirTablero(tablero);
 
@@ -131,15 +115,6 @@ public class Main {
 }
 
 
-//        int [][] tablero = new int[][] {
-//                {4,4,4,4,4,4,4,4},
-//                {4,4,4,4,4,4,4,4},
-//                {4,4,4,4,4,4,4,4},
-//                {4,4,4,4,4,4,4,4},
-//                {4,4,4,4,4,4,4,4},
-//                {4,4,4,4,4,4,4,4},
-//                {4,4,4,4,4,4,4,4},
-//                {4,4,4,4,4,4,4,4},
-//        };
+
 
 
